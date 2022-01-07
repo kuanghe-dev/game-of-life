@@ -67,11 +67,9 @@ function initializeCanvas() {
 }
 
 function drawCanvas() {
-  for (let i = 0; i < ROWS; i++) {
-    for (let j = 0; j < COLS; j++) {
+  for (let i = 0; i < ROWS; i++)
+    for (let j = 0; j < COLS; j++)
       cells[i][j].style.background = cellAlive[i][j] ? "black" : "white";
-    }
-  }
 }
 
 function step() {
@@ -151,7 +149,8 @@ function countLiveNeighbors(isAlive, row, col) {
   let res = 0;
   for (dr = -1; dr <= 1; dr++) {
     for (dc = -1; dc <= 1; dc++) {
-      if (dr === 0 && dc === 0) continue;
+      if (dr === 0 && dc === 0)
+        continue;
       let rowNew = (row + dr + ROWS) % ROWS;
       let colNew = (col + dc + COLS) % COLS;
       res += isAlive[rowNew][colNew];
