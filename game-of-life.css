@@ -1,0 +1,48 @@
+html {
+  font: 16px "Helvetica Neue", Helvetica, Arial, sans-serif;
+}
+
+h1,
+h2,
+h3,
+h4 {
+  text-align: center;
+}
+
+span {
+  margin-right: 30px;
+}
+
+.github-fork-ribbon:before {
+  background-color: #333333;
+}
+
+.header-title {
+  margin: 20px auto;
+  padding: 0;
+}
+
+.text {
+  font-size: 110%;
+  text-align: center;
+}
+
+#canvas {
+  width: 800px;
+  height: 500px;
+  border: 5px solid black;
+  position: relative;
+  margin: auto;
+  box-sizing: content-box;
+}
+
+#pause {
+  color: red;
+  font-style: italic;
+  font-weight: bold;
+  font-size: 110%;
+}
+
+* {
+  box-sizing: border-box;
+}

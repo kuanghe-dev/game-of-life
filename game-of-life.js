@@ -39,7 +39,7 @@ let gameInterval = {
 
   updateSpeed() {
     let speedDiv = document.getElementById("speed");
-    speedDiv.innerText = "Speed: " + (this.intervalIdx + 1) + " / " + INTERVALS.length;
+    speedDiv.innerText = `${this.intervalIdx + 1} / ${INTERVALS.length}`;
     gameInterval.set();
   },
 };

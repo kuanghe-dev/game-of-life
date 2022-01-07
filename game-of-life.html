@@ -1,38 +1,30 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Game of Life</title>
-  <style>
-    h1, h2, h3, h4 {
-      text-align: center;
-    }
-    #canvas {
-      width: 800px;
-      height: 500px;
-      border: 5px solid black;
-      position: relative;
-      margin: auto;
-      box-sizing: content-box;
-    }
-  
-    #pause {
-      color: red;
-    }
-  
-    * {
-      box-sizing: border-box;
-    }
-  </style>
+  <link rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/github-fork-ribbon-css/0.2.3/gh-fork-ribbon.min.css" />
+  <link rel="stylesheet" href="game-of-life.css" type="text/css">
 </head>
+
 <body>
-  <h1>Game of Life</h1>
-  <h4>Space: Pause/Resume, r / R: Restart Game, Arrow Up/Down: Speed Up/Down</h4>
-  <h4 id="speed"></h4>
+  <a class="github-fork-ribbon right-top" href="https://github.com/todo" data-ribbon="Fork me on GitHub"
+    title="Fork me on GitHub">Fork me on GitHub</a>
+  <h1 class="header-title">Game of Life</h1>
+  <p class="text"><span><strong>Space:</strong> Pause/Resume</span>
+    <span><strong>r / R:</strong> Restart Game</span>
+    <span><strong>Up/Down Arrow:</strong> Speed Up/Down</span>
+    </p>
+  <p class="text"><strong>Speed:</strong> <span id="speed"></span></p>
   <div id="canvas">&nbsp;</div>
-  <i><h2 id="pause"></h2></i>
+  <i>
+    <p class="text" id="pause"></p>
+  </i>
 </body>
 <script src="game-of-life.js"></script>
+
 </html>
