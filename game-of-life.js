@@ -6,29 +6,29 @@ const CELLSIZE = 10;
 const cells = Array(ROWS).fill().map(() => Array(COLS));
 const cellAlive = Array(ROWS).fill().map(() => Array(COLS));
 const cellAliveOrig = Array(ROWS).fill().map(() => Array(COLS));
-const INTERVALS = [480, 240, 120, 60, 30, 15, 7];
 
 let gameInterval = {
-  interval: null,
+  intervalID: null,
   intervalIdx: 2,
+  intervals: [480, 240, 120, 60, 30, 15, 7],
 
   isSet() {
-    return this.interval != null;
+    return this.intervalID != null;
   },
 
   set() {
     this.clear();
-    this.interval = setInterval(step, INTERVALS[this.intervalIdx]);
+    this.intervalID = setInterval(step, this.intervals[this.intervalIdx]);
   },
 
   clear() {
-    if (this.interval)
-      clearInterval(this.interval);
-    this.interval = null;
+    if (this.intervalID)
+      clearInterval(this.intervalID);
+    this.intervalID = null;
   },
 
   speedUp() {
-    this.intervalIdx = Math.min(this.intervalIdx + 1, INTERVALS.length - 1);
+    this.intervalIdx = Math.min(this.intervalIdx + 1, this.intervals.length - 1);
     this.updateSpeed();
   },
 
@@ -39,7 +39,7 @@ let gameInterval = {
 
   updateSpeed() {
     let speedDiv = document.getElementById("speed");
-    speedDiv.innerText = `${this.intervalIdx + 1} / ${INTERVALS.length}`;
+    speedDiv.innerText = `${this.intervalIdx + 1} / ${this.intervals.length}`;
     gameInterval.set();
   },
 };
