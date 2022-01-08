@@ -8,23 +8,26 @@ const cellAlive = Array(ROWS).fill().map(() => Array(COLS));
 const cellAliveOrig = Array(ROWS).fill().map(() => Array(COLS));
 
 let gameInterval = {
+  paused: false,
   intervalID: null,
   intervalIdx: 2,
   intervals: [480, 240, 120, 60, 30, 15, 7],
 
-  isSet() {
-    return this.intervalID != null;
+  isPaused() {
+    return this.paused;
   },
 
   set() {
     this.clear();
     this.intervalID = setInterval(step, this.intervals[this.intervalIdx]);
+    this.paused = false;
   },
 
   clear() {
     if (this.intervalID)
       clearInterval(this.intervalID);
     this.intervalID = null;
+    this.paused = true;
   },
 
   speedUp() {
@@ -40,7 +43,8 @@ let gameInterval = {
   updateSpeed() {
     let speedDiv = document.getElementById("speed");
     speedDiv.innerText = `${this.intervalIdx + 1} / ${this.intervals.length}`;
-    gameInterval.set();
+    if (!this.isPaused())
+      gameInterval.set();
   },
 };
 
@@ -114,10 +118,10 @@ window.addEventListener("keydown", (e) => {
 });
 
 function pauseOrResume() {
-  if (gameInterval.isSet())
-    pauseGame();
-  else
+  if (gameInterval.isPaused())
     resumeGame();    
+  else
+    pauseGame();
 }
 
 function pauseGame() {
@@ -138,8 +142,10 @@ function startGame() {
   makeInitialState();
   // makeInitialState_glider();
   drawCanvas();
-  resumeGame();
-  gameInterval.set();
+  if (gameInterval.isPaused())
+    resumeGame();
+  else
+    gameInterval.set();
   gameInterval.updateSpeed();
 }
 
