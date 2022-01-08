@@ -9,10 +9,6 @@ h4 {
   text-align: center;
 }
 
-span {
-  margin-right: 30px;
-}
-
 .github-fork-ribbon:before {
   background-color: #333333;
 }
@@ -25,6 +21,19 @@ span {
 .text {
   font-size: 110%;
   text-align: center;
+}
+
+.hotkeys {
+  font-size: 110%;
+  text-align: center;
+  margin: auto;
+  max-width: 800px;
+  padding: 5px;
+  border: 1px dashed #333;
+}
+
+.hotkey-text {
+  margin-right: 30px;
 }
 
 #canvas {
