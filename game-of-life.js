@@ -142,10 +142,6 @@ function startGame() {
   makeInitialState();
   // makeInitialState_glider();
   drawCanvas();
-  if (gameInterval.isPaused())
-    resumeGame();
-  else
-    gameInterval.set();
   gameInterval.updateSpeed();
 }
 
