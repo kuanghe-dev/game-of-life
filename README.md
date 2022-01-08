@@ -1,6 +1,6 @@
 # Game of Life
 
-This is a JavaScript implementation of [Conway's Game of Life](https://en.wikipedia.org/wiki/Conway%27s_Game_of_Life). We always start from a random state, with 50% of all cells being alive.
+This is a JavaScript implementation of [Conway's Game of Life](https://en.wikipedia.org/wiki/Conway%27s_Game_of_Life) with periodic boundary conditions. We always start from a random state, with 50% of all cells being alive.
 
 Users can adjust speed of the game, as well as pause/resume/restart as desired.
 
