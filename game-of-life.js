@@ -98,19 +98,23 @@ window.addEventListener("keydown", (e) => {
   if (e.shiftKey || e.ctrlKey || e.altKey || e.metaKey) {
     return;
   }
-  e.preventDefault();
+  
   switch (e.key) {
     case " ":
+      e.preventDefault();
       pauseOrResume();
       break;
     case "R":
     case "r":
+      e.preventDefault();
       startGame();
       break;
     case "ArrowUp":
+      e.preventDefault();
       gameInterval.speedUp();
       break;
     case "ArrowDown":
+      e.preventDefault();
       gameInterval.speedDown();
       break;
   }
