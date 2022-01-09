@@ -5,7 +5,6 @@ const COLS = 80;
 const CELLSIZE = 10;
 const cells = Array(ROWS).fill().map(() => Array(COLS));
 const cellAlive = Array(ROWS).fill().map(() => Array(COLS));
-const cellAliveOrig = Array(ROWS).fill().map(() => Array(COLS));
 
 let gameInterval = {
   paused: false,
@@ -77,9 +76,9 @@ function drawCanvas() {
 }
 
 function step() {
+  const cellAliveOrig = Array(ROWS);
   for (let i = 0; i < ROWS; i++)
-    for (let j = 0; j < COLS; j++)
-      cellAliveOrig[i][j] = cellAlive[i][j];
+    cellAliveOrig[i] = [...cellAlive[i]];
 
   for (let i = 0; i < ROWS; i++) {
     for (let j = 0; j < COLS; j++) {
