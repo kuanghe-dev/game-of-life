@@ -47,8 +47,50 @@ let gameInterval = {
   },
 };
 
+initializeCallbacks();
 initializeCanvas();
 startGame();
+
+// -------------------- callbacks  --------------------
+
+function initializeCallbacks() {
+  setRestartCallback();
+  setSpeedUpCallback();
+  setSpeedDownCallback();
+  setPauseCallback();
+}
+
+function setRestartCallback() {
+  const elem = document.getElementById("restart-btn");
+
+  elem.addEventListener("click", (e) => {
+    startGame();
+  });
+}
+
+function setSpeedUpCallback() {
+  const elem = document.getElementById("speed-up-btn");
+
+  elem.addEventListener("click", (e) => {
+    gameInterval.speedUp();
+  });
+}
+
+function setSpeedDownCallback() {
+  const elem = document.getElementById("speed-down-btn");
+
+  elem.addEventListener("click", (e) => {
+    gameInterval.speedDown();
+  });
+}
+
+function setPauseCallback() {
+  const elem = document.getElementById("pause-btn");
+
+  elem.addEventListener("click", (e) => {
+    pauseOrResume();
+  });
+}
 
 // -------------------- rendering --------------------
 
@@ -128,17 +170,17 @@ function pauseOrResume() {
 }
 
 function pauseGame() {
-  let pauseDiv = document.getElementById("pause");
-  pauseDiv.innerText = "Paused!";
   gameInterval.clear();
   canvas.style.borderColor = "red";
+  const pauseBtn = document.getElementById("pause-btn");
+  pauseBtn.innerText = "Resume";
 }
 
 function resumeGame() {
-  let pauseDiv = document.getElementById("pause");
-  pauseDiv.innerText = "";
   gameInterval.set();
   canvas.style.borderColor = "black";
+  const pauseBtn = document.getElementById("pause-btn");
+  pauseBtn.innerText = "Pause";
 }
 
 function startGame() {
@@ -163,18 +205,25 @@ function countLiveNeighbors(isAlive, row, col) {
   return res;
 }
 
+function getInitialStateUserInput() {
+  const elem = document.getElementById("inital-state");
+  return elem.options[elem.selectedIndex].value;
+}
+
 function makeInitialState() {
   for (let i = 0; i < ROWS; i++)
     for (let j = 0; j < COLS; j++)
       cellAlive[i][j] = false;
 
-  if (window.location.search === "")
-    makeRandomState();
-  else if (window.location.search === "?1")
+  const initialState = getInitialStateUserInput();
+
+  if (initialState == "spaceships") {
     makeSpaceships();
-  else if (window.location.search === "?2") {
+  } else if (initialState == "oscillators") {
     makeStillLifes();
-    makeOscillators();
+    makeOscillators();  
+  } else {
+    makeRandomState();
   }
 }
 
@@ -246,7 +295,7 @@ function makeOscillators() {
                         [10, 1], [10, 2], [10, 3], [11, 2]];
 
   let objects = [blinker, toad, beacon, pulsar, Pentadecathlon];
-  let startPos = [[10, 15], [22, 15], [35, 15], [23, 34], [23, 61]];
+  let startPos = [[11, 15], [23, 15], [35, 15], [24, 34], [24, 61]];
 
   let idx = 0;
   for (let obj of objects) {

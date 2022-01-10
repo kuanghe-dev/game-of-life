@@ -14,23 +14,20 @@ body {
   margin: 40px auto;
 }
 
-h1 {
-  text-align: center;
-}
-
 a, a:visited {
   color: #c00;
 }
 
 .header-title {
-  margin: 15px auto;
+  text-align: center;
+  margin: 20px auto;
   padding: 0;
 }
-
+/* 
 .hotkeys {
   text-align: center;
   letter-spacing: 0.03em;
-  margin: auto;
+  margin: 15px auto;
   padding: 15px 0;
   border: 2px dashed #333;
   border-radius: 5px;
@@ -38,6 +35,68 @@ a, a:visited {
 
 .hotkeys span {
   padding-right: 30px;
+} */
+
+.user-inputs {
+  display: flex;
+  padding: 15px 0;
+  border: 1px dashed #333;
+  border-radius: 5px;
+}
+
+.left-box {
+  flex: 3;
+  text-align: center;
+}
+
+.middle-box {
+  flex: 2;
+  padding-top: 5px;
+  text-align: center;
+}
+
+.right-box {
+  flex: 3;
+  color: rgb(255, 0, 0);
+  font-style: italic;
+  font-weight: bold;
+  text-align: center;
+}
+
+select {
+  padding: 10px;
+  border-radius: 5px;
+  background-color: #f4f4f4;
+}
+
+select:hover {
+  background: rgb(155, 155, 155);
+}
+
+.btn {
+  font-weight: bold;
+  border-radius: 5px;
+  cursor: pointer;
+  background: #e4e4e4;
+}
+
+.btn:hover {
+  background: rgb(155, 155, 155);
+}
+
+.btn-large {  
+  padding: 8px 20px;
+  min-width: 100px;
+  margin-left: 15px;
+}
+
+.btn-small {
+  font-family: 'Courier New', Courier, monospace;
+  padding: 4px 6px;
+}
+
+#pause-btn {
+  color: #f00;
 }
 
 #canvas {
@@ -48,29 +107,6 @@ a, a:visited {
   position: relative;
   margin: 20px auto;
   box-sizing: content-box;
-}
-
-.status {
-  display: flex;
-}
-
-.left-box {
-  flex: 1;
-}
-
-.middle-box {
-  flex: 1;
-  font-size: 110%;
-  text-align: center;
-}
-
-.right-box {
-  flex: 1;
-  color: red;
-  font-style: italic;
-  font-weight: bold;
-  font-size: 110%;
-  text-align: center;
 }
 
 * {

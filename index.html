@@ -20,17 +20,34 @@
         href="https://en.wikipedia.org/wiki/Conway%27s_Game_of_Life">Conway's Game of Life</a>,
       with periodic boundary conditions. We always start from a random state, with 50% of all cells
       being alive.</p>
-    <p class="hotkeys">
+    <!-- <p class="hotkeys">
       <span><strong>Space:</strong> Pause/Resume</span>
       <span><strong>Up/Down Arrow:</strong> Speed Up/Down</span>
       <span><strong>r/R:</strong> Restart Game</span>
-    </p>
-    <div id="canvas"></div>
-    <div class="status">
-      <div class="left-box">&nbsp;</div>
-      <div class="middle-box"><strong>Speed:</strong> <span id="speed"></span></div>
-      <div class="right-box"><span id="pause"></span></div>
+    </p> -->
+
+    <div class="user-inputs">
+      <div class="left-box">
+      <label for="inital-state"><strong>Initial State: </strong></label>
+      <select name="initial-state" id="inital-state" style="padding: 10px 10px;">
+        <option value="random" selected>Random</option>
+        <option value="spaceships">Spaceships</option>
+        <option value="oscillators">Still Lifes / Oscillators</option>
+      </select>
     </div>
+    <div class="middle-box">
+      <span><strong>Speed:</strong></label>
+      <button id="speed-up-btn" class="btn btn-small">+</button>
+      <span id="speed"></span>
+      <button id="speed-down-btn" class="btn btn-small">-</button>
+    </div>
+    <div class="right-box">
+      <button id="restart-btn" class="btn btn-large">Restart</button>
+      <button id="pause-btn" class="btn btn-large">Pause</button>
+    </div>
+    </div>
+
+    <div id="canvas"></div>
   </div>
 </body>
 <script src="game-of-life.js"></script>
