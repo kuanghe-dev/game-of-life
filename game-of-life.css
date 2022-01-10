@@ -31,7 +31,7 @@ a, a:visited {
   text-align: center;
   letter-spacing: 0.03em;
   margin: auto;
-  padding: 20px 0;
+  padding: 15px 0;
   border: 2px dashed #333;
   border-radius: 5px;
 }
@@ -50,21 +50,22 @@ a, a:visited {
   box-sizing: content-box;
 }
 
-#empty-block {
-  float: left;
-  width: 33.3%;
+.status {
+  display: flex;
 }
 
-#speed-block {
-  float: left;
-  width: 33.3%;
+.left-box {
+  flex: 1;
+}
+
+.middle-box {
+  flex: 1;
   font-size: 110%;
   text-align: center;
 }
 
-#pause-block {
-  float: left;
-  width: 33.3%;
+.right-box {
+  flex: 1;
   color: red;
   font-style: italic;
   font-weight: bold;
