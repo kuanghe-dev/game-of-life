@@ -143,7 +143,6 @@ function resumeGame() {
 
 function startGame() {
   makeInitialState();
-  // makeInitialState_glider();
   drawCanvas();
   gameInterval.updateSpeed();
 }
@@ -164,21 +163,95 @@ function countLiveNeighbors(isAlive, row, col) {
   return res;
 }
 
-function makeInitialState_glider() {
-  let startCells = [
-    [3, 4],
-    [4, 5],
-    [5, 3],
-    [5, 4],
-    [5, 5],
-  ];
-
-  for (let i = 0; i < startCells.length; i++)
-    cellAlive[startCells[i][0]][startCells[i][1]] = true;
-}
-
 function makeInitialState() {
   for (let i = 0; i < ROWS; i++)
     for (let j = 0; j < COLS; j++)
+      cellAlive[i][j] = false;
+
+  if (window.location.search === "")
+    makeRandomState();
+  else if (window.location.search === "?1")
+    makeSpaceships();
+  else if (window.location.search === "?2") {
+    makeStillLifes();
+    makeOscillators();
+  }
+}
+
+function makeRandomState() {
+  for (let i = 0; i < ROWS; i++)
+    for (let j = 0; j < COLS; j++)
       cellAlive[i][j] = (Math.random() < 0.5);
+}
+
+function makeSpaceships(row0=2, col0=2) {
+  let glider = [[0, 1], [1, 2], [2, 0], [2, 1], [2, 2]];
+  let lightWeightSpaceship = [[0, 0], [0, 3], [1, 4], [2, 0], [2, 4], [3, 1],
+                              [3, 2], [3, 3], [3, 4]];
+  let middleWeightSpaceship = [[0, 2], [1, 0], [1, 4], [2, 5], [3, 0], [3, 5],
+                               [4, 1], [4, 2], [4, 3], [4, 4], [4, 5]];
+  let heavyWeightSpaceship = [[0, 2], [0, 3], [1, 0], [1, 5], [2, 6], [3, 0],
+                              [3, 6], [4, 1], [4, 2], [4, 3], [4, 4], [4, 5], [4, 6]];
+ 
+  let objects = [
+    lightWeightSpaceship,
+    middleWeightSpaceship,
+    heavyWeightSpaceship,
+    glider,
+  ];
+
+  for (let obj of objects) {
+    for (let [row, col] of obj)
+      cellAlive[row + row0][col + col0] = true;
+    row0 += 12;
+  }
+}
+
+function makeStillLifes() {
+  let block = [[0, 0], [0, 1], [1, 0], [1, 1]];
+  let beehive = [[0, 1], [0, 2], [1, 0], [1, 3], [2, 1], [2, 2]];
+  let loaf = [[0, 1], [0, 2], [1, 0], [1, 3], [2, 1], [2, 3], [3, 2]];
+  let boat = [[0, 0], [0, 1], [1, 0], [1, 2], [2, 1]];
+  let tub = [[0, 1], [1, 0], [1, 2], [2, 1]];
+
+  let objects = [block, beehive, loaf, boat, tub];
+  let row0 = 10;
+  let col0 = 28;
+  let startPos = [[row0, col0], [row0, col0+8], [row0, col0+17], [row0, col0+26], [row0, col0+35]];
+
+  let idx = 0;
+  for (let obj of objects) {
+    for (let [row, col] of obj)
+      cellAlive[row + startPos[idx][0]][col + startPos[idx][1]] = true;
+    idx += 1
+  }
+}
+
+function makeOscillators() {
+  let blinker = [[0, 0], [0, 1], [0, 2]];
+  let toad = [[0, 1], [0, 2], [0, 3], [1, 0], [1, 1], [1, 2]];
+  let beacon = [[0, 0], [0, 1], [1, 0], [2, 3], [3, 2], [3, 3]];
+  let pulsar = [[0, 2], [0, 3], [0, 4], [0, 8], [0, 9], [0, 10],
+                [2, 0], [2, 5], [2, 7], [2, 12],
+                [3, 0], [3, 5], [3, 7], [3, 12],
+                [4, 0], [4, 5], [4, 7], [4, 12],
+                [5, 2], [5, 3], [5, 4], [5, 8], [5, 9], [5, 10],
+                [7, 2], [7, 3], [7, 4], [7, 8], [7, 9], [7, 10],
+                [8, 0], [8, 5], [8, 7], [8, 12],
+                [9, 0], [9, 5], [9, 7], [9, 12],
+                [10, 0], [10, 5], [10, 7], [10, 12],
+                [12, 2], [12, 3], [12, 4], [12, 8], [12, 9], [12, 10]];
+  let Pentadecathlon = [[0, 2], [1, 1], [1, 2], [1, 3], [2, 0], [2, 1], [2, 2],
+                        [2, 3], [2, 4], [9, 0], [9, 1], [9, 2], [9, 3], [9, 4],
+                        [10, 1], [10, 2], [10, 3], [11, 2]];
+
+  let objects = [blinker, toad, beacon, pulsar, Pentadecathlon];
+  let startPos = [[10, 15], [22, 15], [35, 15], [23, 34], [23, 61]];
+
+  let idx = 0;
+  for (let obj of objects) {
+    for (let [row, col] of obj)
+      cellAlive[row + startPos[idx][0]][col + startPos[idx][1]] = true;
+    idx += 1
+  }
 }
