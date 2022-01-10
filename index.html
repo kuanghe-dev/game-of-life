@@ -7,25 +7,29 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Game of Life</title>
   <link rel="stylesheet"
-    href="https://cdnjs.cloudflare.com/ajax/libs/github-fork-ribbon-css/0.2.3/gh-fork-ribbon.min.css" />
+    href="https://cdnjs.cloudflare.com/ajax/libs/github-fork-ribbon-css/0.2.3/gh-fork-ribbon.min.css">
   <link rel="stylesheet" href="game-of-life.css" type="text/css">
 </head>
 
 <body>
   <a class="github-fork-ribbon right-top" href="https://github.com/kuanghe-dev/game-of-life.git"
     data-ribbon="Fork me on GitHub" title="Fork me on GitHub">Fork me on GitHub</a>
-  <h1 class="header-title">Game of Life</h1>
-  <p class="text">This is a JavaScript implementation of <a
-      href="https://en.wikipedia.org/wiki/Conway%27s_Game_of_Life">Conway's Game of Life</a>.<br>
-    We always start from a random state, with 50% of all cells being alive.</p>
-  <p class="hotkeys">
-    <span class="hotkey-text"><strong>Space:</strong> Pause/Resume</span>
-    <span class="hotkey-text"><strong>r / R:</strong> Restart Game</span>
-    <span class="hotkey-text"><strong>Up/Down Arrow:</strong> Speed Up/Down</span>
-  </p>
-  <p class="text"><strong>Speed:</strong> <span id="speed"></span></p>
-  <div id="canvas"></div>
-  <p class="text" id="pause"></p>
+  <div class="container">
+    <h1 class="header-title">Game of Life</h1>
+    <p class="description">This is a JavaScript implementation of <a
+        href="https://en.wikipedia.org/wiki/Conway%27s_Game_of_Life">Conway's Game of Life</a>,
+      with periodic boundary conditions. We always start from a random state, with 50% of all cells
+      being alive.</p>
+    <p class="hotkeys">
+      <span><strong>Space:</strong> Pause/Resume</span>
+      <span><strong>Up/Down Arrow:</strong> Speed Up/Down</span>
+      <span><strong>r/R:</strong> Restart Game</span>
+    </p>
+    <div id="canvas"></div>
+    <div id="empty-block">&nbsp;</div>
+    <div id="speed-block"><strong>Speed:</strong> <span id="speed"></span></div>
+    <div id="pause-block"><span id="pause"></span></div>
+  </div>
 </body>
 <script src="game-of-life.js"></script>
 

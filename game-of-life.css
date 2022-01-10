@@ -1,11 +1,10 @@
-html {
+body {
   font: 16px "Helvetica Neue", Helvetica, Arial, sans-serif;
+  background-color: #f4f4f4;
+  line-height: 1.3em;
 }
 
-h1,
-h2,
-h3,
-h4 {
+h1 {
   text-align: center;
 }
 
@@ -13,27 +12,28 @@ h4 {
   background-color: #333333;
 }
 
+.container {
+  width: 800px;
+  padding-bottom: 40px;
+  margin: 40px auto;
+}
+
 .header-title {
   margin: 20px auto;
   padding: 0;
 }
 
-.text {
-  font-size: 110%;
-  text-align: center;
-}
-
 .hotkeys {
-  font-size: 110%;
   text-align: center;
+  letter-spacing: 0.04em;
   margin: auto;
-  max-width: 800px;
-  padding: 5px;
-  border: 1px dashed #333;
+  padding: 15px 0;
+  border: 2px dashed #333;
+  border-radius: 5px;
 }
 
-.hotkey-text {
-  margin-right: 30px;
+.hotkeys span {
+  margin: 0 15px;
 }
 
 #canvas {
@@ -41,15 +41,30 @@ h4 {
   height: 500px;
   border: 5px solid black;
   position: relative;
-  margin: auto;
+  margin: 20px auto;
   box-sizing: content-box;
 }
 
-#pause {
+#empty-block {
+  float: left;
+  width: 33.3%;
+}
+
+#speed-block {
+  float: left;
+  width: 33.3%;
+  font-size: 110%;
+  text-align: center;
+}
+
+#pause-block {
+  float: left;
+  width: 33.3%;
   color: red;
   font-style: italic;
   font-weight: bold;
   font-size: 110%;
+  text-align: center;
 }
 
 * {
