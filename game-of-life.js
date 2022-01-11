@@ -55,10 +55,11 @@ startGame();
 
 function initializeCallbacks() {
   setRestartCallback();
-  setSpeedUpCallback();
-  setSpeedDownCallback();
-  setPauseCallback();
-  setCanvasCallback();
+  addInitialStateCallback();
+  addSpeedUpCallback();
+  addSpeedDownCallback();
+  addPauseCallback();
+  addCanvasCallback();
 }
 
 function setRestartCallback() {
@@ -69,7 +70,15 @@ function setRestartCallback() {
   });
 }
 
-function setSpeedUpCallback() {
+function addInitialStateCallback() {
+  const elem = document.getElementById("inital-state");
+
+  elem.addEventListener("change", (e) => {
+    startGame();
+  });
+}
+
+function addSpeedUpCallback() {
   const elem = document.getElementById("speed-up-btn");
 
   elem.addEventListener("click", (e) => {
@@ -77,7 +86,7 @@ function setSpeedUpCallback() {
   });
 }
 
-function setSpeedDownCallback() {
+function addSpeedDownCallback() {
   const elem = document.getElementById("speed-down-btn");
 
   elem.addEventListener("click", (e) => {
@@ -85,7 +94,7 @@ function setSpeedDownCallback() {
   });
 }
 
-function setPauseCallback() {
+function addPauseCallback() {
   const elem = document.getElementById("pause-btn");
 
   elem.addEventListener("click", (e) => {
@@ -93,7 +102,7 @@ function setPauseCallback() {
   });
 }
 
-function setCanvasCallback() {
+function addCanvasCallback() {
   const elem = document.getElementById("canvas");
 
   elem.addEventListener("click", (e) => {
