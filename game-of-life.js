@@ -186,6 +186,7 @@ function resumeGame() {
 function startGame() {
   makeInitialState();
   drawCanvas();
+  resumeGame();
   gameInterval.updateSpeed();
 }
 
