@@ -73,18 +73,17 @@ a, a:visited {
 }
 
 .left-box select:hover {
-  background: rgb(155, 155, 155);
+  background: #e4e4e4;
 }
 
 .btn {
   font-weight: bold;
   border-radius: 5px;
   cursor: pointer;
-  background: #e4e4e4;
 }
 
 .btn:hover {
-  background: rgb(155, 155, 155);
+  background: #e4e4e4;
 }
 
 .btn-large {  
