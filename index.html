@@ -20,6 +20,7 @@
         href="https://en.wikipedia.org/wiki/Conway%27s_Game_of_Life">Conway's Game of Life</a>,
       with periodic boundary conditions. We can start from a random state, with 50% of all cells
       being alive, or explore a series of interesting patterns.</p>
+      
     <!-- <p class="hotkeys">
       <span><strong>Space:</strong> Pause/Resume</span>
       <span><strong>Up/Down Arrow:</strong> Speed Up/Down</span>
@@ -28,19 +29,21 @@
 
     <div class="user-inputs">
       <div class="left-box">
-      <label for="inital-state"><strong>Initial State: </strong></label>
-      <select name="initial-state" id="inital-state" style="padding: 10px 10px;">
-        <option value="random" selected>Random</option>
+      <select name="initial-state" id="inital-state">
+        <option value="random" selected disabled>-- Choose Initial State --</option>
+        <option value="random">Random</option>
         <option value="spaceships">Spaceships</option>
         <option value="oscillators">Still Lifes / Oscillators</option>
       </select>
     </div>
+
     <div class="middle-box">
-      <span><strong>Speed:</strong></label>
+      <span class="label">Speed:</span>
       <button id="speed-up-btn" class="btn btn-small">+</button>
       <span id="speed"></span>
       <button id="speed-down-btn" class="btn btn-small">-</button>
     </div>
+
     <div class="right-box">
       <button id="restart-btn" class="btn btn-large">Restart</button>
       <button id="pause-btn" class="btn btn-large">Pause</button>
