@@ -20,7 +20,7 @@ a, a:visited {
 
 .header-title {
   text-align: center;
-  margin: 20px auto;
+  margin: 30px auto;
   padding: 0;
 }
 /* 
@@ -40,6 +40,7 @@ a, a:visited {
 .user-inputs {
   display: flex;
   padding: 15px 0;
+  margin: 25px auto;
   border: 1px dashed #333;
   border-radius: 5px;
 }
