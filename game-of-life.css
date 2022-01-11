@@ -110,6 +110,7 @@ a, a:visited {
   position: relative;
   margin: 20px auto;
   box-sizing: content-box;
+  cursor: pointer;
 }
 
 * {

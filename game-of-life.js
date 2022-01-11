@@ -58,6 +58,7 @@ function initializeCallbacks() {
   setSpeedUpCallback();
   setSpeedDownCallback();
   setPauseCallback();
+  setCanvasCallback();
 }
 
 function setRestartCallback() {
@@ -86,6 +87,14 @@ function setSpeedDownCallback() {
 
 function setPauseCallback() {
   const elem = document.getElementById("pause-btn");
+
+  elem.addEventListener("click", (e) => {
+    pauseOrResume();
+  });
+}
+
+function setCanvasCallback() {
+  const elem = document.getElementById("canvas");
 
   elem.addEventListener("click", (e) => {
     pauseOrResume();
