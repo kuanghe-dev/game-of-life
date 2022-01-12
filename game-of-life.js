@@ -59,7 +59,6 @@ function initializeCallbacks() {
   addSpeedUpCallback();
   addSpeedDownCallback();
   addPauseCallback();
-  addCanvasCallback();
 }
 
 function setRestartCallback() {
@@ -102,12 +101,27 @@ function addPauseCallback() {
   });
 }
 
-function addCanvasCallback() {
-  const elem = document.getElementById("canvas");
+// Add a glider centered on where the click is
+function canvasCellCallback(e) {
+  const gliderTruePos = [[-1, 0], [0, 1], [1, -1], [1, 0], [1, 1]];
+  const gliderFalsePos = [[-1, -1], [-1, 1], [0, -1], [0, 0]];
 
-  elem.addEventListener("click", (e) => {
-    pauseOrResume();
-  });
+  let paused = gameInterval.isPaused();
+  if (!paused)
+    gameInterval.clear();
+
+  let elem = document.elementFromPoint(e.clientX, e.clientY);
+  let row = Math.trunc(parseInt(elem.style.top) / CELLSIZE);
+  let col = Math.trunc(parseInt(elem.style.left) / CELLSIZE);
+
+  for (let [dr, dc] of gliderTruePos)
+    cellAlive[(row + dr) % ROWS][(col + dc) % COLS] = true;
+  for (let [dr, dc] of gliderFalsePos)
+    cellAlive[(row + dr) % ROWS][(col + dc) % COLS] = false;
+  drawCanvas();
+
+  if (!paused)
+    gameInterval.set();
 }
 
 // -------------------- rendering --------------------
@@ -122,6 +136,8 @@ function initializeCanvas() {
       cell.style.top = i * CELLSIZE + "px";
       cell.style.width = CELLSIZE + "px";
       cell.style.height = CELLSIZE + "px";
+      cell.addEventListener("mousedown", canvasCellCallback);
+
       canvas.appendChild(cell);
       cells[i][j] = cell;
       cellAlive[i][j] = false;
