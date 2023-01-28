@@ -254,10 +254,10 @@ function makeInitialState() {
 
   if (initialState == "spaceships") {
     makeSpaceships();
-  } else if (initialState == "oscillators") {
+  } else if (initialState == "still_lifes_and_oscillators") {
     makeStillLifes();
     makeOscillators();  
-  } else {
+  } else if (initialState == "random") {
     makeRandomState();
   }
 }
